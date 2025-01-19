@@ -39,6 +39,48 @@ app.post('/api/ideogram/generate', async (req, res) => {
   }
 });
 
+// Add proxy endpoint for fetching images
+app.post('/api/proxy-image', async (req, res) => {
+  try {
+    const { imageUrl } = req.body;
+    
+    if (!imageUrl) {
+      throw new Error('No image URL provided');
+    }
+
+    const response = await fetch(imageUrl, {
+      headers: {
+        'Accept': 'image/*'
+      }
+    });
+    
+    if (!response.ok) {
+      throw new Error(`Failed to fetch image: ${response.status}`);
+    }
+
+    // Get the content type and other headers from the response
+    const contentType = response.headers.get('content-type');
+    const contentLength = response.headers.get('content-length');
+    
+    // Set appropriate headers
+    res.set({
+      'Content-Type': contentType,
+      'Content-Length': contentLength,
+      'Cache-Control': 'public, max-age=31536000',
+      'Access-Control-Allow-Origin': '*'
+    });
+
+    // Get the image data as a buffer
+    const imageData = await response.arrayBuffer();
+    
+    // Send the buffer
+    res.send(Buffer.from(imageData));
+  } catch (error) {
+    console.error('Image proxy error:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
 app.listen(port, () => {
   console.log(`Proxy server running on port ${port}`);
 }); 
