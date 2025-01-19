@@ -1,0 +1,86 @@
+.model-selector-container {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1001;
+  transition: transform 0.3s ease-in-out; /* Add this line for smooth transition */
+}
+
+.model-selector {
+  background-color: #3a3a3a;
+  border-radius: 20px;
+  padding: 10px 20px;
+  color: #ffffff;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 150px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.model-selector:hover {
+  background-color: #4a4a4a;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.dropdown-arrow {
+  margin-left: 10px;
+  font-size: 12px;
+}
+
+.model-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 10px;
+  background-color: #2a2a2a;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.model-option {
+  padding: 15px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.model-option:hover {
+  background-color: #3a3a3a;
+}
+
+.model-option.selected {
+  background-color: #4a4a4a;
+}
+
+.model-name {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #ffffff;
+}
+
+.model-description {
+  display: block;
+  font-size: 12px;
+  color: #cccccc;
+}
+
+.sidebar-open .model-selector-container {
+  transform: translateX(calc(-50% + 125px));
+}
+
+.sidebar-closed .model-selector-container {
+  transform: translateX(-50%);
+}

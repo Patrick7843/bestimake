@@ -1,0 +1,56 @@
+.bottom-input-container {
+  position: fixed;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  transition: all 0.3s ease-in-out;
+  z-index: 1001; /* Ensure it's above the logo overlay */
+}
+
+.bottom-input {
+  width: 80%;
+  max-width: 800px;
+  display: flex;
+  background-color: #3a3a3a;
+  border-radius: 25px;
+  padding: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.bottom-input input {
+  flex-grow: 1;
+  background-color: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 16px;
+  padding: 10px;
+  outline: none;
+}
+
+.bottom-input button {
+  background-color: #4a4a4a;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.bottom-input button:hover {
+  background-color: #5a5a5a;
+}
+
+.send-icon {
+  color: #ffffff;
+  font-size: 18px;
+}
+
+.sidebar-open .bottom-input-container {
+  transform: translateX(125px);
+}

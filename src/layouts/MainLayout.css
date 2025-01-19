@@ -1,0 +1,24 @@
+.main-layout {
+  display: flex;
+  height: 100vh;
+  background-color: #1e1e1e;
+  color: #ffffff;
+}
+
+.main-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 20px;
+  transition: margin-left 0.3s ease-in-out;
+}
+
+.sidebar-open .main-content {
+  margin-left: 250px;
+}
+
+.sidebar-closed .main-content {
+  margin-left: 20px;
+}
+
